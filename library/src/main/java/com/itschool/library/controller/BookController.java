@@ -17,7 +17,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @PostMapping
+    @PostMapping("/api/books")
     public ResponseEntity<BookDTO> createBook(@RequestBody BookDTO bookDTO) {
         return ResponseEntity.ok(bookService.createBook(bookDTO));
     }

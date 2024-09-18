@@ -1,6 +1,8 @@
 package com.itschool.library.controller;
 
 import com.itschool.library.models.dtos.BookDTO;
+import com.itschool.library.models.dtos.RequestBookDTO;
+import com.itschool.library.models.dtos.ResponseBookDTO;
 import com.itschool.library.services.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +20,7 @@ public class BookController {
     }
 
     @PostMapping("/api/books")
-    public ResponseEntity<BookDTO> createBook(@RequestBody BookDTO bookDTO) {
+    public ResponseEntity<ResponseBookDTO> createBook(@RequestBody RequestBookDTO bookDTO) {
         return ResponseEntity.ok(bookService.createBook(bookDTO));
     }
 }

@@ -14,7 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class BookServiceImplTest {
@@ -66,6 +66,8 @@ class BookServiceImplTest {
         ResponseBookDTO savedBookDTO = bookService.createBook(requestBookDTO);
 
         //then
+        verify(bookRepository, times(1)).save(bookEntity);
         assertEquals(requestBookDTO.getAuthor(), savedBookDTO.getAuthor());
+        assertEquals(requestBookDTO.getTitle(), savedBookDTO.getTitle());
     }
 }

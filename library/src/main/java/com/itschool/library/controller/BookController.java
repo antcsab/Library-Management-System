@@ -1,6 +1,5 @@
 package com.itschool.library.controller;
 
-import com.itschool.library.models.dtos.BookDTO;
 import com.itschool.library.models.dtos.RequestBookDTO;
 import com.itschool.library.models.dtos.ResponseBookDTO;
 import com.itschool.library.services.BookService;
@@ -20,7 +19,7 @@ public class BookController {
     }
 
     @PostMapping("/api/books")
-    public ResponseEntity<ResponseBookDTO> createBook(@RequestBody RequestBookDTO bookDTO) {
-        return ResponseEntity.ok(bookService.createBook(bookDTO));
+    public ResponseEntity<ResponseBookDTO> createBook(@RequestBody RequestBookDTO requestBookDTO) {
+        return ResponseEntity.ok(bookService.createBook(requestBookDTO));
     }
 }

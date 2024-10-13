@@ -13,4 +13,6 @@ public class ResponseBookDTO {
     private String isbn;
 
     private String genre;
+
+    private int copiesAvailable;
 }

@@ -29,4 +29,14 @@ public class CustomerServiceImpl implements CustomerService {
 
         return objectMapper.convertValue(customerEntityResponse, ResponseCustomerDTO.class);
     }
+
+    @Override
+    public void deleteCustomerById(Long id) {
+        // find if customer to be deleted is present in database
+        customerRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Customer with" + id + " not found"));
+
+        //proceed with deleted customer by id
+        customerRepository.deleteById(id);
+        log.info("Customer with id {} was deleted", id);
+    }
 }

@@ -4,6 +4,8 @@ package com.itschool.library.models.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "customers")
@@ -21,4 +23,7 @@ public class Customer {
 
     @Column(name = "email")
     private String email;
+
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    private List<BorrowRecord> borrowRecords;
 }

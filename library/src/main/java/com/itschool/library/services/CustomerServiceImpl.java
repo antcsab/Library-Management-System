@@ -1,7 +1,8 @@
 package com.itschool.library.services;
 
-
+import com.itschool.library.exceptions.CustomerNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.itschool.library.exceptions.CustomerDuplicateEmailException;
 import com.itschool.library.models.dtos.RequestCustomerDTO;
 import com.itschool.library.models.dtos.ResponseCustomerDTO;
 import com.itschool.library.models.entities.Customer;
@@ -38,5 +39,12 @@ public class CustomerServiceImpl implements CustomerService {
         //proceed with deleted customer by id
         customerRepository.deleteById(id);
         log.info("Customer with id {} was deleted", id);
+    }
+
+    private void validateEmailAddress(RequestCustomerDTO requestCustomerDTO) {
+        Customer customer = customerRepository.findByEmail(requestCustomerDTO.getEmail());
+        if (customer != null) {
+            throw new CustomerDuplicateEmailException("Email address already exists");
+        }
     }
 }

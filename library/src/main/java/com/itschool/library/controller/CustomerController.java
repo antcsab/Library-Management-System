@@ -34,12 +34,4 @@ public class CustomerController {
         customerService.deleteCustomerById(id);
         return ResponseEntity.noContent().build();
     }
-
-   // private void validateEmailAddress(RequestCustomerDTO requestCustomerDTO) {
-     //   Customer customer = customerRepository.findByEmail(requestCustomerDTO.getEmail());
-       // if (customer != null) {
-         //   throw new CustomerDuplicateEmailException("Email address already exists");
-        //}
-    //}
 }
-

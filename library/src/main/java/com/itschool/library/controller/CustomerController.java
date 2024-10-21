@@ -1,11 +1,10 @@
 package com.itschool.library.controller;
 
-import com.itschool.library.exceptions.CustomerDuplicateEmailException;
 import com.itschool.library.models.dtos.RequestCustomerDTO;
 import com.itschool.library.models.dtos.ResponseCustomerDTO;
-import com.itschool.library.models.entities.Customer;
 import com.itschool.library.services.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +21,7 @@ public class CustomerController {
     @Operation(summary = "Create a new customer")
     @PostMapping("/api/customers")
     public ResponseEntity<ResponseCustomerDTO> createCustomer(
+            @Valid
             @RequestBody
             RequestCustomerDTO requestCustomerDTO) {
 

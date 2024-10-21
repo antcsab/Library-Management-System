@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,6 @@ import java.util.List;
 
 @RequestMapping("/api/books")
 @RestController
-
 public class BookController {
 
     private final BookService bookService;
@@ -27,7 +27,7 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseBookDTO> createBook(@RequestBody RequestBookDTO requestBookDTO) {
+    public ResponseEntity<ResponseBookDTO> createBook(@Valid @RequestBody RequestBookDTO requestBookDTO) {
         return ResponseEntity.ok(bookService.createBook(requestBookDTO));
     }
 
